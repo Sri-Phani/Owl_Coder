@@ -69,7 +69,25 @@ Sum of All Subset XOR Totals
         int total=0;
         for(int num=0;num<(1<<n);num++)
         {
-            int Xor=0;
+            int Xor=0; vector<int>v;
+        int n=nums.size();
+        v.push_back(nums[0]);
+        int len=1;
+        for(int i=0;i<n;i++)
+        {
+            if(nums[i]>v.back()){
+                v.push_back(nums[i]);
+                len++;
+            }
+            else
+            {
+                int ind=lower_bound(v.begin(),v.end(),nums[i])-v.begin();
+                v[ind]=nums[i];
+            }
+        }
+        return len;
+
+--------------------------------
             for(int bit=0;bit<n;bit++)
             {
                  if(num&(1<<bit)){
@@ -81,3 +99,5 @@ Sum of All Subset XOR Totals
         return total;
         
 -------------------------
+Longest Increasing Subsequence
+
