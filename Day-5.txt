@@ -1,0 +1,23 @@
+Techfest and the Queue
+
+int fact(int n){
+        int count=0;
+        for(int i=2;i<sqrt(n)+1;i++)
+        {
+            while(n%i==0){
+                count++;
+                n=n/i;
+            }
+        }
+        if(n>=2) count++;
+        return count;
+    }
+	int sumOfPowers(int a, int b){
+	    // Code here
+	    int sum=0;
+	    for(int i=a;i<=b;i++)
+	    {
+	        sum+=fact(i);
+	    }
+	    return sum;
+	}
