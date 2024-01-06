@@ -21,3 +21,30 @@ int fact(int n){
 	    }
 	    return sum;
 	}
+
+====================
+ // Invert the Bits
+        //approch 1
+         return ~(unsigned)N;
+        //approch 2
+        bitset<32>a(N);
+        for(int i=0;i<32;i++) a.flip(i);
+        return a.to_ulong();
+=================
+Minimum Number of Operations to Make Array XOR Equal to K
+Input: nums = [2,1,3,4], k = 1
+Output: 2
+class Solution {
+public:
+    int minOperations(vector<int>& nums, int k) {
+        int x = 0;
+        for(auto el:nums){
+            x^=el;
+        }
+        int ans=0;
+        ans=x^k;
+        int res=__builtin_popcount(ans);
+        return res;
+    }
+};
+=================================
