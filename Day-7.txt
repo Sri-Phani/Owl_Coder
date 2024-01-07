@@ -1,0 +1,21 @@
+Check set bits
+
+Input:
+N = 7
+Output:
+1
+Explanation:
+Binary for 7 is 111 all the
+bits are set so output is 1
+
+ // if(N==0) return 0;
+        // while(N>0){
+        //     if((N&1)==0) return 0;
+        //     N=N>>1;
+        // }
+        
+        // return 1;
+
+O(1) logic is:        
+	if(((N+1)&N)==0) return 1;
+        return 0;
