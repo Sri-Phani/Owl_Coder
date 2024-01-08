@@ -1,0 +1,81 @@
+938. Range Sum of BST
+
+https://www.geeksforgeeks.org/inorder-traversal-of-binary-tree/
+Input: root = [10,5,15,3,7,null,18], low = 7, high = 15
+Output: 32
+Explanation: Nodes 7, 10, and 15 are in the range [7, 15]. 7 + 10 + 15 = 32.
+
+class Solution {
+public:
+    int sum=0;
+    int inorder(TreeNode* root,int low,int high)
+    {
+        if(root!=NULL)
+        {
+            inorder(root->left,low,high);
+            if(root->val>=low && root->val<=high) sum+=root->val;
+            inorder(root->right,low,high); 
+        }
+        return sum;
+    }
+    int rangeSumBST(TreeNode* root, int low, int high) {
+        inorder(root,low,high);
+        return sum;
+    }
+};
+
+==========================
+Merge 2 sorted linked list in reverse order
+Input:
+N = 4, M = 3
+list1 = 5->10->15->40 
+list2 = 2->3->20
+Output:
+40->20->15->10->5->3->2
+Explanation:
+After merging the two lists in non-increasing order, we have new lists as 40->20->15->10->5->3->2.
+
+class Solution
+{
+    public:
+    
+    struct Node * mergeResult(Node *node1,Node *node2)
+    {
+        // your code goes 
+        Node *temp1=node1;
+        Node *temp2=node2;
+        Node *dummy=new Node();
+        Node *temp3=dummy;
+        while(temp1!=NULL && temp2!=NULL)
+        {
+            if(temp1->data <= temp2->data)
+            {
+                temp3->next=temp1;
+                temp1=temp1->next;
+            }
+            else{
+                  temp3->next=temp2;
+                  temp2=temp2->next;
+            }
+            temp3=temp3->next;
+        }
+        if(temp1!=NULL)
+        {
+            temp3->next=temp1;
+        }
+        if(temp2!=NULL)
+        {
+            temp3->next=temp2;
+        }
+        Node *curr=dummy->next;
+        Node *prev=NULL;
+        while(curr!=NULL){
+            Node *temp=curr->next;
+            curr->next=prev;
+            prev=curr;
+            curr=temp;
+        }
+        return prev;
+    }  
+
+===================================
