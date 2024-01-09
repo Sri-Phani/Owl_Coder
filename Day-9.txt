@@ -1,0 +1,67 @@
+872. Leaf-Similar Trees
+
+Input: root1 = [3,5,1,6,2,9,8,null,null,7,4], root2 = [3,5,1,6,7,4,2,null,null,null,null,null,null,9,8]
+Output: true
+
+if leaf values in both trees is same the answer will be true.
+=============================
+Search Pattern (KMP-Algorithm)
+Input:
+txt = "geeksforgeeks"
+pat = "geek"
+Output: 
+1 9
+Explanation: 
+The string "geek" occurs twice in txt, one starts are index 1 and the other at index 9. 
+l=[]
+        p=len(pat)
+        if pat in txt:
+            for i in range(0,len(txt)-len(pat)+1):
+                x=txt[i:i+p]
+                if(pat==x):
+                    l.append(i+1)
+        return l;
+
+=============================
+
+Factorial for bigger numbers:
+//User function template for C++
+
+class Solution {
+public:
+    typedef long  long ll;
+    vector<int> factorial(int N){
+        // code here
+        ll carry=0;
+        vector<ll>factArr(1e4,-1);
+        vector<int>ans;
+        factArr[0]=1;
+        for(ll i=2;i<=N;i++)
+        {
+            ll j=0;
+            while(factArr[j]!=-1)
+            {
+                ll value=(factArr[j]*i)+carry;
+                factArr[j]=(value)%10;
+                carry=value/10;
+                j++;
+            }
+            if(carry!=0){
+                while(carry>0)
+                {
+                    factArr[j]=carry%10;
+                    carry=carry/10;
+                    j++;
+                }
+            } 
+        }
+        for(ll i=1e4-1;i>=0;i--)
+        {
+            if(factArr[i]!=-1){
+                ans.push_back((int)factArr[i]);
+            }
+        }
+        return ans ;
+    }
+};
+--------------------------
