@@ -1,0 +1,93 @@
+Prime Tuples
+2
+3
+6
+0
+1
+Explanation:
+Example case 1: There are no good tuples. 
+(
+1
+,
+2
+,
+3
+)
+(1,2,3) is not a good tuple since 
+1
+1 is not prime.
+
+Example case 2: 
+(
+2
+,
+3
+,
+5
+)
+(2,3,5) is a good tuple since 
+2
+2, 
+3
+3 and 
+5
+5 are prime and 
+2
++
+3
+=
+5
+2+3=5.
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int t;
+	vector<int>prime;
+	cin>>t;
+	while(t--)
+	{
+	    int n;
+	    cin>>n;
+	    bool seive[n+1];
+	    seive[0]=false;
+	    seive[1]=false;
+	    for(int i=2;i<=n;i++)
+	    {
+	        seive[i]=true;
+	    }
+	    for(int i=2;i*i<=n;i++)
+	    {
+	        if(seive[i]==true)
+	        {
+	           for(int j=i*i;j<=n;j+=i)
+    	        {
+    	           seive[j]=false; 
+    	        } 
+	        }
+	    }
+	    int c=0;
+	    for(int i=3;i<=n;i++)
+	    {
+	        if(seive[i])
+	        {
+	            int x=2+i;
+	            if(x<=n)
+	            {
+	                 if(seive[x]==true)
+    	            {
+    	                c++;
+    	            }
+	            }
+	           
+	        }
+	    }
+	    cout<<c<<endl;
+	}
+
+}
+
+=============================
